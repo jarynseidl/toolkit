@@ -31,6 +31,10 @@ public class Perceptron extends SupervisedLearner {
 		}
 		double classification_accuracy = correct/(correct + errors);
 		double classification_error = 1-classification_accuracy;
+		double sse = 0;
+		for(int i = 0;i<outputs.length;i++){
+			sse+=(labels.get(i, 0) - outputs[i]) * (labels.get(i, 0) - outputs[i]);
+		}
 	}
 
 	@Override

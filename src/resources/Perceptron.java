@@ -1,14 +1,11 @@
-package learners;
-
-import resources.Matrix;
-import resources.SupervisedLearner;
+package resources;
 
 public class Perceptron extends SupervisedLearner {
 
 	@Override
 	public void train(Matrix features, Matrix labels) throws Exception {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override

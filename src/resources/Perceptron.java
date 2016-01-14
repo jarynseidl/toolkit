@@ -6,7 +6,7 @@ import java.util.Random;
 public class Perceptron extends SupervisedLearner {
 
 	double [] weights;
-	double learningRate = .5;
+	double learningRate = .1;
 	Random rand;
 	int epoch_threshold;
 	double accuracy_threshold;
@@ -14,19 +14,15 @@ public class Perceptron extends SupervisedLearner {
 	
 	public Perceptron(Random rand){
 		this.rand = rand;
-		epoch_threshold = 15;
+		epoch_threshold = 5;
 		accuracy_threshold = 0.1;
 	}
 	@Override
 	public void train(Matrix features, Matrix labels) throws Exception {
-		// TODO Auto-generated method stub
 		weights = new double[features.cols()+1];
 		initializeWeights(weights);
-		//Loop until done
 		boolean done = false;
-		//Store outputs to compare to targets.
 		double[] outputs = new double[features.rows()];
-		//Number of epochs
 		ArrayList<Double> accuracies = new ArrayList<Double>();
 		accuracies.add(0.0);
 		int epochs = 0;
@@ -64,7 +60,7 @@ public class Perceptron extends SupervisedLearner {
 		for(int i = 0;i< features.length;i++){
 			sum += features[i] * weights[i];
 		}
-		sum += weights[weights.length-1];
+		sum += bias_input*weights[weights.length-1];
 		if(sum>=0){
 			labels[0] = 1;
 		}else{
